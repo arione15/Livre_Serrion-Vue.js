@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,28 +15,15 @@
 </body>
 
 <script>
-    Vue.component("Hello", {
-        template: `<div>
-        <h1> Hello Vue.js ! </h1>
-    </div>`});
     const vm = new Vue({
         el: "div#root",
-        template: `<Hello/>`,
+        template: "<h1> Hello Vue ! </h1>",
         data: {
             name: "Vue.js",
-            welcome: "Hello"
-        },
-        methods: {
-            display_header() {
-                return this.welcome + " " + this.name;
-            }
-        },
-        computed: {
-            header() {
-                return this.display_header();
-            }
+            welcomee: "Hello"
         }
-
+        methods:
+        
     });
 
 
