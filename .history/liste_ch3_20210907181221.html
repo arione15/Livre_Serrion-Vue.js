@@ -62,12 +62,12 @@
                     else return element;
                 });
             },
-            updated() {
+            updated(){
                 const inputs = this.$refs.input;
-                if (input && inputs.length) {
+                if(input && inputs.length){
                     const last_input = inputs[input.length - 1];
                     last_input.focus();
-                }
+                };
             }
         }
     })

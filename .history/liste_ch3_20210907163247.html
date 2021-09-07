@@ -23,10 +23,10 @@
                 <ul>
                     <li v-for="(element, index) of elements" style="margin:10px;">
                         <span v-if="!element.modifyOn"
-                            v-on:dblclick="modifier(index)"> {{ element.text }} </span>
+                            v-on:dblclick="modifier(element)"> {{ element.text }} </span>
                         <input type="text" v-else style="width:100px;"
                         v-bind:value="element.text"
-                        v-on:keyup.enter="valider(index, $event)" ref="monInput">
+                        v-on:keyup="valider(element, $event)">
                     
                         <button @click="supprimer(element)" style="margin-left:10px;">Supprimer</button>
                     </li>
@@ -54,23 +54,14 @@
                 elt.modifyOn = true;
             },
             valider(index, event) {
-                const value = event.target.value;
-                this.elements = this.elements.map(function (element, i) {
-                    if (i === index) {
-                        return { text: value, modifyOn: false };
-                    }
-                    else return element;
-                });
-            },
-            updated() {
-                const inputs = this.$refs.input;
-                if (input && inputs.length) {
-                    const last_input = inputs[input.length - 1];
-                    last_input.focus();
+                if(event.key == "Enter"){
+                    const value = event
                 }
+                console.log(event);
             }
         }
-    })
+    });
+
 </script>
 
 </html>
