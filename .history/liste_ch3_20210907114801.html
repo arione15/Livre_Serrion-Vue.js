@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+</body>
+
+<script>
+    const vm = new Vue({
+        el: "div#root",
+        template: `
+            <div>
+                <ul>
+                    <li v-for="element of elements" style="margin:10px;">
+                        <span> {{ element }} </span>
+                        <button @click="remove(element)" style="margin-left:10px;">Supprimer</button>
+                    </li>
+                </ul>
+            </div>
+        `,
+        data: {
+            elements: [
+            "element 1",
+            "element 2",
+            "element 3",
+            "element 4",
+            "element 5",
+            ]
+        },
+        methods: {
+            remove(element){
+                this.elements = this.elements.filter(function(element, index){
+                    
+                })
+            }
+        }
+    });
+
+</script>
+
+</html>
