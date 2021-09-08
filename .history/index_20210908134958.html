@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exo_Ch3 Liste</title>
+    <title>Liste</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
@@ -23,7 +23,7 @@
                 <button v-on:click="ajouter()">Ajouter un élément</button>
                 <ul>
                     <li v-for="(element, index) of elements" style="margin:10px;"> 
-                        <span v-if="!element.modifyOn" v-on:dblclick="modifier(index, $event)">{{element.text}}</span> 
+                        <span v-if="!element.modifyOn" v-on:dblclick="modifier(index)">{{element.text}}</span> 
                         <input type="text" v-else style="width:100px;"
                             v-bind:value="element.text"
                             v-on:keyup.enter="valider(index, $event)"
@@ -60,10 +60,10 @@
             },
             valider(index, event) {
                 const value = event.target.value;
-                this.elements = this.elements.map(function (elt, i) {
-                    if (i===index) return { text: value, modifyOn: false };
-                    else return elt;
-                });
+                this.elements = this.elements.map(function cb(elt, i) {
+                    if (index === i) return { text: value, modifyOn: false };
+                    else return element;
+                })
             },
             updated() {
                 const inputs = this.$refs.input;

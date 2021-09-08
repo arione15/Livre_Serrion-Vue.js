@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+</body>
+
+<script>
+    const vm = new Vue({
+        el: "div#root",
+        template: `
+            <div>
+                <button v-on:click="ajouter()">Ajouter un élément</button>
+                <ul>
+                    <li v-for="(element, index) of elements" style="margin:10px"> 
+                        {{element.text}} 
+                    <button v-on:click="supprimer(index)" style="margin-left:10px">Supprimer</button>
+                </li>
+                </ul>
+                <span v-if="elements.length === 0">La liste est vide !!</span>
+            </div>
+        `,
+        data: {
+            elements: [
+                { text: "Elément 1", modifyOn: false },
+                { text: "Elément 2", modifyOn: false },
+                { text: "Elément 3", modifyOn: false },
+                { text: "Elément 4", modifyOn: false },
+                { text: "Elément 5", modifyOn: false },
+            ]
+        },
+        methods: {
+            supprimer(index){
+                this.elements = this.elements.filter(function cb(elt,i){
+                    if(index===i) return false;
+                    else return true;
+                })
+            },
+            ajouter(){
+                const length = this.elements.length + 1;
+                const element = { text: `Elément ` + length, modifyOn: false };
+                this.elements.push(element);
+            },
+            modifier(index, event){
+                this.elements[index].modifyOn = truse;
+            }
+
+
+            
+        }
+    })
+</script>
+
+</html>
